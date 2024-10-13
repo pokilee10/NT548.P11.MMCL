@@ -22,3 +22,33 @@ variable "availability_zones" {
   description = "Availability zones"
   type        = list(string)
 }
+
+variable "ami_id" {
+  description = "AMI ID for EC2 instances"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "Instance type for EC2 instances"
+  type        = string
+}
+
+variable "public_instance_count" {
+  description = "Number of public EC2 instances"
+  type        = number
+}
+
+variable "private_instance_count" {
+  description = "Number of private EC2 instances"
+  type        = number
+}
+
+variable "my_ip" {
+  description = "Your IP address"
+  type        = string
+}
+
+variable "id_ed25519_pub" {
+  description = "Public key for SSH access"
+  type        = string
+}

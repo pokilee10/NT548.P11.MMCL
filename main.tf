@@ -18,3 +18,9 @@ module "route_tables" {
   internet_gateway_id = module.vpc.internet_gateway_id
   nat_gateway_ids     = module.nat_gateway.nat_gateway_ids
 }
+
+
+module "nat_gateway" {
+  source            = "./modules/nat_gateway"
+  public_subnet_ids = module.vpc.public_subnet_ids
+}

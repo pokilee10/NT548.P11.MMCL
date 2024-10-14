@@ -17,3 +17,5 @@ terraform.rc
 
 # Ignore .terraform.lock.hcl file
 .terraform.lock.hcl
+
+*.log

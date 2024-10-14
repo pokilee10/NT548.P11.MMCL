@@ -9,6 +9,31 @@ resource "aws_instance" "public" {
   tags = {
     Name = "Public EC2 ${count.index + 1}"
   }
+
+  provisioner "file" {
+    source      = "~/.ssh/id_ed25519"
+    destination = "/home/ubuntu/.ssh/id_ed25519"
+
+    connection {
+      type        = "ssh"
+      host        = self.public_ip
+      user        = "ubuntu"
+      private_key = file("~/.ssh/id_ed25519")
+    }
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod 600 /home/ubuntu/.ssh/id_ed25519",
+    ]
+
+    connection {
+      type        = "ssh"
+      host        = self.public_ip
+      user        = "ubuntu"
+      private_key = file("~/.ssh/id_ed25519")
+    }
+  }
 }
 
 resource "aws_instance" "private" {

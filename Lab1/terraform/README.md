@@ -51,4 +51,31 @@ No requirements.
 | <a name="output_public_instance_ips"></a> [public\_instance\_ips](#output\_public\_instance\_ips) | n/a |
 | <a name="output_public_subnet_ids"></a> [public\_subnet\_ids](#output\_public\_subnet\_ids) | n/a |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
+
+## Usage
+1. **Cài đặt Terraform**: Cài đặt Terraform từ trang chủ Terraform.
+2. **Cấu hình AWS Credentials**: Cài đặt AWS CLI và sử dụng lệnh ```aws configure ``` để thêm acceskey và secretkey giúp terraform có thể thực hiện các dịch vụ
+3. **Clone Github Project và chạy code Terraform**:
+  ```
+  git clone https://github.com/pokilee10/NT548.P11.MMCL/tree/main
+  cd NT548.P11.MMCL/Lab1/terraform/
+  ```
+4. **Chạy code Terraform**:
+   1. Thực hiện chỉnh sửa các biến nếu cần thiết trong file ``terraform.tfvars``
+   2. Khởi tạo Terraform Project
+      ```
+      terraform init
+      ```
+   3. Kiểm tra các tài nguyên mà Terraform sẽ tạo trước khi triển khai
+      ```
+      terraform plan
+      ```
+   4. Triển khai lên AWS
+      ```
+      terraform apply -auto-approve
+      ```
+   5. Dọn dẹp tài nguyên
+      ```
+      terraform destroy -auto-approve
+      ```
 <!-- END_TF_DOCS -->

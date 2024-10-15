@@ -54,7 +54,7 @@ No requirements.
 
 ## Usage
 1. **Cài đặt Terraform**: Cài đặt Terraform từ trang chủ Terraform.
-2. **Cấu hình AWS Credentials**: Cài đặt AWS CLI và sử dụng lệnh ```aws configure ``` để thêm acceskey và secretkey giúp terraform có thể thực hiện các dịch vụ
+2. **Cấu hình AWS Credentials**: Cài đặt AWS CLI và sử dụng lệnh ```aws configure ``` để thêm accesskey và secretkey giúp terraform có thể thực hiện các dịch vụ
 3. **Clone Github Project và chạy code Terraform**:
   ```
   git clone https://github.com/pokilee10/NT548.P11.MMCL/tree/main

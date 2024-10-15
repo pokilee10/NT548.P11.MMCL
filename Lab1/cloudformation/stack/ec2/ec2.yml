@@ -25,8 +25,8 @@ Parameters:
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
   
   LatestAmiId:
-    Type: String
-    Default: "ami-089f365c7b6a04f00"
+    Type: AWS::EC2::Image::Id
+    Default: "ami-0866a3c8686eaeeba"
 
   PublicSubnetIds:
     Type: String

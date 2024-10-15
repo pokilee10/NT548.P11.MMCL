@@ -65,9 +65,7 @@ Resources:
         EnvironmentName: !Ref EnvironmentName
         VpcCIDR: !Ref VpcCIDR
         PublicSubnetCIDR1: !Ref PublicSubnetCIDR1
-        PublicSubnetCIDR2: !Ref PublicSubnetCIDR2
         PrivateSubnetCIDR1: !Ref PrivateSubnetCIDR1
-        PrivateSubnetCIDR2: !Ref PrivateSubnetCIDR2
         AvailabilityZone1: !Ref AvailabilityZone1
         AvailabilityZone2: !Ref AvailabilityZone2
 
@@ -95,8 +93,6 @@ Resources:
         PublicSecurityGroupId: !GetAtt SecurityGroupsStack.Outputs.PublicSecurityGroupId
         PrivateSecurityGroupId: !GetAtt SecurityGroupsStack.Outputs.PrivateSecurityGroupId
 
-    DependsOn:
-      - SecurityGroupsStack
 
 Outputs:
   VPCId:

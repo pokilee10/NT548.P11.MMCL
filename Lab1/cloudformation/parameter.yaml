@@ -17,10 +17,10 @@
   ParameterValue: us-east-1b
 
 - ParameterKey: AllowedSSHIP
-  ParameterValue: 192.168.86.1/32
+  ParameterValue: 14.186.138.123/32
 
 - ParameterKey: InstanceType
   ParameterValue: t2.micro
 
 - ParameterKey: KeyPairName
-  ParameterValue: nhom15
+  ParameterValue: lxl

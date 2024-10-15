@@ -96,8 +96,6 @@ Resources:
         PublicSecurityGroupId: !GetAtt SecurityGroupsStack.Outputs.PublicSecurityGroupId
         PrivateSecurityGroupId: !GetAtt SecurityGroupsStack.Outputs.PrivateSecurityGroupId
 
-    DependsOn:
-      - SecurityGroupsStack
 
 Outputs:
   VPCId:

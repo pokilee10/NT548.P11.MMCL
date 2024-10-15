@@ -30,9 +30,7 @@ Resources:
           ToPort: 22
           CidrIp: !Ref AllowedSSHIP   
       SecurityGroupEgress:
-        - IpProtocol: -1
-          FromPort: -1
-          ToPort: -1
+        - IpProtocol: "-1"
           CidrIp: 0.0.0.0/0   
       Tags:
         - Key: Name
@@ -49,9 +47,7 @@ Resources:
           ToPort: 22
           SourceSecurityGroupId: !Ref PublicSecurityGroup   
       SecurityGroupEgress:
-        - IpProtocol: -1
-          FromPort: -1
-          ToPort: -1
+        - IpProtocol: "-1"
           CidrIp: 0.0.0.0/0   
       Tags:
         - Key: Name

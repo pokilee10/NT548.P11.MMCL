@@ -4,12 +4,11 @@
 
     Vì ở đây mình sử dụng archlinux cho wsl nên mình cũng sẽ tải cfn trên package của archlinux
       ```
-    
       wsl --install
       
       sudo pacman -S cfn-lint 
       ```
-2. **Cấu hình AWS Credentials**: Cài đặt AWS CLI và sử dụng lệnh ```aws configure ``` để thêm accesskey và secretkey giúp terraform có thể thực hiện các dịch vụ
+2. **Cấu hình AWS Credentials**: Cài đặt AWS CLI và sử dụng lệnh ```aws configure``` để thêm accesskey và secretkey giúp terraform có thể thực hiện các dịch vụ
 3. **Clone Github Project**:
       ```
       git clone https://github.com/pokilee10/NT548.P11.MMCL/tree/main

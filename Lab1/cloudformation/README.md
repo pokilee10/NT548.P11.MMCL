@@ -26,7 +26,7 @@
       ```
     
    3. Thực hiện chỉnh sửa các biến nếu cần thiết trong file ``parameter.yaml`` ip mong muốn có thể ssh vào public instance và key name đã tạo ở trên
-
+    (Nên tìm kiếm What's my IP để lấy IP public cùa máy mình vả đưa vào IP)
       ```
       {
         "ParameterKey": "AllowedSSHIP",

@@ -45,34 +45,6 @@ Parameters:
     Type: AWS::EC2::SecurityGroup::Id
 
 Resources:
-  PublicEC2Instance1:
-    Type: AWS::EC2::Instance
-    Metadata:
-      guard:
-        SuppressedRules:
-          - INCOMING_SSH_DISABLED
-    Properties:
-      InstanceType: !Ref InstanceType
-      KeyName: !Ref KeyPairName
-      ImageId: !Ref LatestAmiId
-      SecurityGroupIds:
-        - !Ref PublicSecurityGroupId
-      SubnetId: !Select [ 0, !Split [ ",", !Ref PublicSubnetIds] ]
-
-  PublicEC2Instance2:
-    Type: AWS::EC2::Instance
-    Metadata:
-      guard:
-        SuppressedRules:
-          - INCOMING_SSH_DISABLED
-    Properties:
-      InstanceType: !Ref InstanceType
-      KeyName: !Ref KeyPairName
-      ImageId: !Ref LatestAmiId
-      SecurityGroupIds:
-        - !Ref PublicSecurityGroupId
-      SubnetId: !Select [ 1, !Split [ ",", !Ref PublicSubnetIds ] ]
-
   PrivateEC2Instance1:
     Type: AWS::EC2::Instance
     Metadata:
@@ -87,7 +59,8 @@ Resources:
         - !Ref PrivateSecurityGroupId
       SubnetId: !Select [ 0, !Split [ ",", !Ref PrivateSubnetIds ] ]
 
-  PrivateEC2Instance2:
+  
+  PublicEC2Instance1:
     Type: AWS::EC2::Instance
     Metadata:
       guard:
@@ -98,15 +71,25 @@ Resources:
       KeyName: !Ref KeyPairName
       ImageId: !Ref LatestAmiId
       SecurityGroupIds:
-        - !Ref PrivateSecurityGroupId
-      SubnetId: !Select [ 1, !Split [ ",", !Ref PrivateSubnetIds ] ]
+        - !Ref PublicSecurityGroupId
+      SubnetId: !Select [ 0, !Split [ ",", !Ref PublicSubnetIds] ]
+    # UserData:
+    #   Fn::Base64:
+    #     !Sub  |
+    #          ssh-keygen -t rsa -b 2048 -f ~/.ssh/my-key
+    #          -private=
+    #          -Fn::GetAtt:
+    #             - PrivateEC2Instance1
+    #             - PrivateIp
+    #          ssh-copy-id -i ~/.ssh/my-key.pub ec2-user@private
+
 
 Outputs:
   PublicEC2InstanceIds:
     Description: The IDs of the Public EC2 Instances
-    Value: !Join [ ",", [ !Ref PublicEC2Instance1, !Ref PublicEC2Instance2 ] ]
+    Value: !Join [ ",", [ !Ref PublicEC2Instance1 ] ]
 
   PrivateEC2InstanceIds:
     Description: The IDs of the Private EC2 Instances
-    Value: !Join [ ",", [ !Ref PrivateEC2Instance1, !Ref PrivateEC2Instance2 ] ]
+    Value: !Join [ ",", [ !Ref PrivateEC2Instance1 ] ]
   

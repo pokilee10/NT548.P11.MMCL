@@ -20,9 +20,13 @@
       ```
       aws s3api create-bucket --bucket <s3_bucket_name> --region <your_region>
       ```
-   2. Tạo Keypair
+   2.1 Tạo Keypair
       ```
       aws ec2 create-key-pair --key-name <namekeypair>
+      ```
+   2.2 Nếu đã có sẵn Keypair đã tạo từ trước ta có thể sử dụng lệnh sau để đưa public lên aws để sử dụng 
+      ```
+      aws ec2 import-key-pair --key-name <your-key-name-in-aws> --public-key-material file://~/.ssh/<your-public-key>.pub
       ```
     
    3. Thực hiện chỉnh sửa các biến nếu cần thiết trong file ``parameter.yaml`` ip mong muốn có thể ssh vào public instance và key name đã tạo ở trên
@@ -44,12 +48,12 @@
       cfn-lint **/*.yml  
 
       # Upload các stack đã tạo trong folder stack lên S3 Bucket đã tạo ở bước trên
-      aws s3 cp .\nested_stack s3://your-bucket-name/ --recursive --exclude "*" --include "*.yml" 
+      aws s3 cp ./stack s3://your-bucket-name/ --recursive --exclude "*" --include "*.yml" 
 
       # Triển khai
       aws cloudformation create-stack \
       --stack-name <nameStack>   \
-      --template-body file://networking.yaml   \
+      --template-body file://templates.yml   \
       --parameters file://parameter.json   \
       --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 

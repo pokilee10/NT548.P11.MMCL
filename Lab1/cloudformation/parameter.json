@@ -20,16 +20,12 @@
         "ParameterValue": "us-east-1a"
     },
     {
-        "ParameterKey": "AvailabilityZone2",
-        "ParameterValue": "us-east-1b"
-    },
-    {
         "ParameterKey": "AllowedSSHIP",
         "ParameterValue": "14.186.138.123/32"
     },
     {
         "ParameterKey": "KeyPairName",
-        "ParameterValue": "lxlso1lan2"
+        "ParameterValue": "lxlso1"
     },
     {
         "ParameterKey": "InstanceType",

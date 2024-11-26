@@ -1,0 +1,37 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - echo "Installing cfn-lint and taskcat"
+      - pip install cfn-lint taskcat
+  pre_build:
+    commands:
+      - echo "Checking if S3 bucket group15 exists"
+      - |
+        if aws s3api head-bucket --bucket group15 2>/dev/null; then
+          echo "S3 bucket group15 already exists"
+        else
+          echo "Creating S3 bucket group15"
+          aws s3api create-bucket --bucket group15 --region us-east-1
+        fi
+      - echo "Copying files from CodeCommit to S3 bucket group15"
+      - aws s3 cp . s3://group15/ --recursive
+  build:
+    commands:
+      - echo "Downloading CloudFormation template from S3"
+      - aws s3 cp ./stack s3://group15/ --recursive --exclude "*" --include "*.yml"
+      - echo "Running cfn-lint on CloudFormation template"
+      - cfn-lint templates.yml
+      - echo "Downloading Taskcat config from S3"
+      - aws s3 cp s3://group15/.taskcat.yml ./.taskcat.yml
+      - ls -la .
+      - echo "Running Taskcat tests"
+      - taskcat test run 
+artifacts:
+  files:
+    - '**/*'
+  base-directory: '.'
+  discard-paths: yes

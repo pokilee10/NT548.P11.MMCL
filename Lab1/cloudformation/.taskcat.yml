@@ -1,0 +1,18 @@
+project:
+  name: group15
+
+tests:
+  my-test:
+    template: templates.yml
+    parameters:
+      EnvironmentName: development
+      VpcCIDR: 10.0.0.0/16
+      PublicSubnetCIDR1: 10.0.1.0/24
+      PrivateSubnetCIDR1: 10.0.2.0/24
+      AvailabilityZone1: us-east-1a
+      AvailabilityZone2: us-east-1b
+      AllowedSSHIP: 14.186.138.123/32
+      KeyPairName: lxlso1
+      InstanceType: t2.micro
+    regions:
+      - us-east-1
